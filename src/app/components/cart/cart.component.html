@@ -1,0 +1,94 @@
+<div class=" body2 mt-5">
+    <div class="textContainer">
+        <h1 class="d_f bouncingAnim">
+            <span>P</span>
+            <span>H</span>
+            <span>O</span>
+            <span>N</span>
+            <span>E</span>
+        </h1>
+    </div>
+</div>
+
+
+<div class="dropdown position-fixed top-0 end-0 me-5 mt-5">
+    <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+         
+    </button>
+    <ul class="dropdown-menu">
+
+        <li><a class="dropdown-item" routerLink="/">back to home</a></li>
+        <li><a class="dropdown-item" style="cursor: pointer;"  (click)="logOut()">LogOut</a></li>
+
+    </ul>
+</div>
+<div class=" container">
+    <h1 *ngIf="err" class=" mt-5 bg-info text-white p-2 rounded-3">{{err}}</h1>
+    <div class=" row align-content-center mb-5">
+
+        <div *ngFor=" let pro of data" class=" col-md-7">
+
+            <div class="  item d-flex  shadow-lg  ">
+
+                <div class=" me-5">
+                    <img [src]="pro.productOrder.product_Pic" class="w-100 mt-2 rounded-3" alt="">
+                </div>
+                <div>
+                    <h3>NAME {{pro.productOrder.productName}}</h3>
+                    <h3>TITLE {{pro.productOrder.productTitle}}</h3>
+                    <div class=" d-flex justify-content-between">
+                        <h3> PRICE {{pro.productOrder.productPriceFinal}}</h3>
+                    </div>
+                    <div class=" d-flex">
+                        <input type=" number" max="10" class=" form-control w-25 " id="count"
+                            placeholder="Choose count">
+                        <button class=" btn btn-outline-info ms-3" (click)="updateCountUser(pro._id)"> change</button>
+                        <h4 *ngIf="pro.price" class=" ms-2">Total : {{pro.price }}</h4>
+                    </div>
+                    <button class=" btn btn-outline-info mt-2" id="btnPu" *ngIf="!pro.done"
+                        (click)="Purchase(pro._id)">Purchase
+                        confirmation</button>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- mony -->
+        <div *ngFor=" let pro of dataOrderDone" class="   col-md-4   d-flex justify-content-center mx-auto  ">
+
+
+
+            <div class=" item">
+                <p class="text-center alert alert-success my-2  " *ngIf="!pro.manDopBoolean"> Confirm the arrival the order</p>
+                <!-- <p *ngIf="successOrder" class=" text-center">{{successOrder | uppercase}}</p> -->
+                <img [src]="pro.productOrder.product_Pic" class=" w-100" alt="">
+                <h4>NAME :{{pro.productOrder.productName}}</h4>
+                <h3>TITLE :{{pro.productOrder.productTitle}}</h3>
+                <div class=" d-flex justify-content-between align-items-center">
+                    <h3> PRICE :{{pro.productOrder.productPriceFinal}}</h3>
+                    <div>
+                        <h4 class=" ms-2" *ngIf="pro.price">count : {{ pro.price/ pro.productOrder.productPriceFinal}}
+                        </h4>
+                        <h4 *ngIf="pro.price" class=" ms-2">Total : {{pro.price }}</h4>
+                    </div>
+
+                </div>
+                <button *ngIf="!pro.manDopBoolean"
+                    class=" btn btn-outline-info fw-bolder mx-auto d-flex justify-content-center"
+                    (click)="doneOrderArriveForUser(pro._id)">Receive the
+                    product</button>
+                <p *ngIf="pro.manDopBoolean" class=" text-center fw-bolder bg-danger rounded-5">waiting to confirm your order</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+ 

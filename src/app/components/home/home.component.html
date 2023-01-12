@@ -1,0 +1,88 @@
+<div class=" container my-5 pt-5 text-center mx-auto">
+    <div class=" row  g-3">
+        <!-- slider -->
+        <h3 class=" bg-white text-info p-3 w-50 rounded-3 mx-auto">Some of the products pictures</h3>
+        <owl-carousel-o [options]="customOptions" class="shadow-lg mx-auto ps-3 pt-3 rounded-5">
+            <ng-container *ngFor="let pro of data">
+                <ng-template carouselSlide [id]="pro.id">
+                    <div class=" position-relative">
+                        <img [src]="pro.product_Pic" class=" imgSlid rounded-5">
+                        <p class=" text-center  p-1 bg-info w-25 position-absolute top-0 start-0">
+                            {{pro.productPriceFinal }}$</p>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</div>
+<hr>
+<div class=" container mb-3">
+    <h3 class=" bg-info text-white shadow-lg text-center my-4 p-3 w-50 rounded-3 mx-auto"> products
+    </h3>
+    <!-- get data -->
+    <div class=" row g-5 position-relative">
+        <div *ngFor="let pro of data" class="  position-relative  col-md-4">
+            <div class="item bg-white p-1 rounded-2 fw-bolder">
+                <img [src]="pro.product_Pic" class="   imgPro w-100  " alt="">
+                <hr>
+                <div class=" d-flex justify-content-between">
+                    <div class=" ApiData">
+                        <h4><span class=" fw-bold"> name</span> : {{pro.productName}}</h4>
+                        <h5> <span class=" fw-bold"> description : </span>{{pro.productTitle}}</h5>
+                        <h2><span class=" fw-bold"> price</span>:{{pro.productPriceFinal}}</h2>
+                    </div>
+                    <!-- ************ -->
+                    <div class=" ApiBtn position-relative">
+                        <button class=" btn btn-outline-info" (click)="buyProduct(pro._id)"><i
+                                class="fa-solid fa-cart-shopping" style="color: #8C8984;"></i></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="success" style="z-index: 999;" class="   success">
+            <p class=" text-center text-success alert alert-success"> {{success}}</p>
+        </div>
+    </div>
+</div>
+<!-- success -->
+
+
+<!-- register and login or no -->
+<div class=" buyOrNot" id="buyOrNot">
+    <div class=" itemBuyOrNot rounded-3 p-3">
+        <p style="cursor: pointer;" class=" float-end me-1 mt-1" (click)="closeBuy()"> <i class="fa-solid fa-xmark"></i>
+        </p>
+        <div class=" clearfix"></div>
+        <h2 class=" text-center bg-info rounded-3 p-3 w-75 mx-auto">please log in to buy </h2>
+        <p style="cursor: pointer;" class=" bg-danger w-25 p-2 rounded-3 text-white       mx-auto text-center"
+            routerLink="login"> LogIn</p>
+    </div>
+</div>
+
+
+
+
+
+<h1 class=" text-center bg-info shadow-lg fw-bolder rounded-5 w-50 mx-auto py-2">Enjoy shopping with us</h1>
+<div class=" body    ">
+
+    <div id="container">
+        <div class="steam" id="steam1"> </div>
+        <div class="steam" id="steam2"> </div>
+        <div class="steam" id="steam3"> </div>
+        <div class="steam" id="steam4"> </div>
+
+        <div id="cup">
+            <div id="cup-body">
+                <div id="cup-shade"></div>
+            </div>
+            <div id="cup-handle"></div>
+        </div>
+
+        <div id="saucer"></div>
+
+        <div id="shadow"></div>
+    </div>
+</div>
